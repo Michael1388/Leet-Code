@@ -1,0 +1,29 @@
+/* C# */
+
+public class Solution {
+    public IList<string> FizzBuzz(int n) {
+        List<string> arrayList = new List<string>(new string[] {});
+        
+        for (int i = 1; i <= n; i++)
+        {
+            if (i % 3 == 0 && i % 5 == 0)
+            {
+                arrayList.Add("FizzBuzz");
+            }
+            else if (i % 3 == 0)
+            {
+                arrayList.Add("Fizz");
+            }
+            else if (i % 5 == 0)
+            {
+                arrayList.Add("Buzz");
+            }
+            else
+            {
+                arrayList.Add(i.ToString());
+            } 
+        }
+
+        return arrayList;
+    }
+}

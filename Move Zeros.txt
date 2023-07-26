@@ -1,0 +1,50 @@
+/Move Zeroes
+
+//Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+//Note that you must do this in-place without making a copy of the array.
+
+// Capture 0's
+// Move 0's to end of array
+
+
+// iterate through array
+// Check if 0
+// true > move to end
+// .. search for non 0 element - itterate and check
+// .. swap with current 0
+// .. .. replace the 0 with the found non-zero element
+// .. .. replace the found non-zero element with 0 (if were any other number would need a tempvar to store)
+// .. .. go to next iteration for i
+// .. if no non 0 is found end
+// false > continue
+
+//C# order by / array
+
+//[1,2,0,3,12] tempvar = 1
+//[2,2,0,3,12] tempvar = 1
+//[2,1,0,3,12] tempvar = 1
+
+public class Solution {
+    public void MoveZeroes(int[] nums) 
+    {
+        
+        for (int i=0; i< nums.Length; i++)
+        {
+            // Console.WriteLine(string.Join(",", nums));
+            if (nums [i] == 0)
+            {
+                for (int j=i+1; j< nums.Length; j++)
+                {
+                    if (nums [j] != 0)
+                    {
+                        // Console.WriteLine(string.Join(",", nums));
+                        nums[i] = nums[j];
+                        nums[j] = 0;
+                        // Console.WriteLine(string.Join(",", nums));
+                        break;
+                    }
+                }
+            }
+        } 
+    }
+}

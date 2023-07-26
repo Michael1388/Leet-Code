@@ -1,0 +1,59 @@
+// Is Subsequence
+
+// Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+
+// A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+// form a new string containing the result of s and t
+// iterate through s and t
+// compare s to t
+// return true IF s contains t
+
+
+ // need to stop after each letter found and remove all of the previously itterated string
+// .. To do this we will create a new string and iterate as long as there is more to iterate through
+// After each character is found remove the parts that you have already iterated through
+// Continue untill there is no string left in 'remainingText'
+
+
+// Side thought, might need to make a case for if it reaches the end of the for loop without finding any characters, edge case for when there is nothing to match
+
+
+public class Solution {
+    public bool IsSubsequence(string s, string t) {           
+        string newList = "";
+
+        while (t.Length > 0)
+        {
+            bool foundAnyData = false;
+            for (int i=0; i< s.Length; i++)
+            {   
+                for (int j=0; j< t.Length; j++)
+                {
+                    if (t[j] == s[i])
+                    {
+                        newList += (t[j]);
+                        //Console.WriteLine(t[j] + ", found at: " + j);
+                        
+                        t = t.Substring(j) + 1);
+                        foundAnyData = true;
+                        break;
+                    }
+                }
+            // Console.WriteLine(newList + ", run #: " + i);
+            }    
+           if (!foundAnyData)
+            {
+                break;
+            } 
+        }
+
+        
+        Console.WriteLine(newList);
+        if (String.Equals(newList, s))
+        {
+            return true;
+        }
+return false;   
+    }
+}

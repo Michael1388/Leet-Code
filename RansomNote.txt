@@ -1,0 +1,56 @@
+// Ransom Note
+
+// Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise. Each letter in magazine can only be used once in ransomNote.
+
+// High Level Steps..ish
+// Step through magazine, 
+// Determine IF magazine Contains the Char needed to build the ransomNote
+// .. check each charachter in magazine
+// compare to ransomeNote to see if needed (to build ransomNote)
+// If Contains Char, 
+// .. set it to the side
+// if not keep looking (continue)
+// next check to see if ransomNote has been completed
+// if so, return true
+// If not, then return false
+
+// new requirement: ransomNote can only be created if magazine letters are in the same order...
+// step through the ransomNote
+// determine if magazine contains the character needed to build the ransomNote
+// .. check each character in ransomNote
+// .. .. check against each character in magazine, and remove characters as they are 'used'
+// if character is found
+// .. set it to the side
+// if not keep looking (continue)
+// next check to see if ransomNote has been completed
+// if so, return true
+// If not, then return false
+
+
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {           
+        string newList = "";
+
+        for (int i=0; i< ransomNote.Length; i++)
+        {   
+            for (int j=0; j< magazine.Length; j++)
+            {
+                if (magazine[j] == ransomNote[i])
+                {
+                    newList += (magazine[j]);
+                    Console.WriteLine(magazine[j] + ", found at: " + j);
+                    magazine = magazine.Remove(j, 1);
+                    break;
+
+                }
+            }
+            Console.WriteLine(newList + ", run #: " + i);
+        }    
+        Console.WriteLine(newList);
+        if (String.Equals(newList, ransomNote))
+        {
+            return true;
+        }
+return false;   
+    }
+}
